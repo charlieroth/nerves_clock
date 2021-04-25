@@ -1,7 +1,7 @@
 defmodule Clock.LEDAdapter do
   defstruct [:module, :led]
 
-  @type pin() :: non_neg_integer()
+  @type pin :: non_neg_integer()
   @type led_state() :: any()
 
   @callback open(pin()) :: led_state()
