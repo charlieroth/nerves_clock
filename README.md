@@ -1,29 +1,37 @@
-# Clock
+# Nerves Clock
 
-**TODO: Add description**
+LED light display of the second hand, of a clock, represented as a binary number
 
-## Targets
+## Target Used
 
-Nerves applications produce images for hardware targets based on the
-`MIX_TARGET` environment variable. If `MIX_TARGET` is unset, `mix` builds an
-image that runs on the host (e.g., your laptop). This is useful for executing
-logic tests, running utilities, and debugging. Other targets are represented by
-a short name like `rpi3` that maps to a Nerves system image for that platform.
-All of this logic is in the generated `mix.exs` and may be customized. For more
-information about targets see:
+Raspberry PI 4 Model B
 
-https://hexdocs.pm/nerves/targets.html#content
+## Circuit Used
+
+![Image of Circuit](/Circuit.png?raw=true)
 
 ## Getting Started
 
-To start your Nerves app:
-  * `export MIX_TARGET=my_target` or prefix every command with
-    `MIX_TARGET=my_target`. For example, `MIX_TARGET=rpi3`
+  * `export MIX_TARGET=rpi4` or prefix every command with `MIX_TARGET=rpi4`
   * Install dependencies with `mix deps.get`
   * Create firmware with `mix firmware`
   * Burn to an SD card with `mix firmware.burn`
 
-## Learn more
+
+## Connect To Target
+  
+  * `ssh nerves.local`
+
+## Upgrading Firmware
+
+While connected to `target` via ssh
+
+  * Create a new firmware with `mix firmware`
+  * Upload new firmware to available partition with `mix upload`
+  * Drink some water, Reconnect to `target`
+
+
+## Resources
 
   * Official docs: https://hexdocs.pm/nerves/getting-started.html
   * Official website: https://nerves-project.org/
