@@ -1,5 +1,5 @@
 defmodule Clock.LEDAdapter.Dev do
-  defstruct [pin: 26, lit: false]
+  defstruct [pin: 0, lit: false]
 
   require Logger
   alias Clock.LEDAdapter

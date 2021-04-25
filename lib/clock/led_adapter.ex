@@ -13,23 +13,9 @@ defmodule Clock.LEDAdapter do
     %__MODULE__{module: module, led: module.open(pin)}
   end
 
-  def on(adapter) do
-    %{adapter | led: adapter.module.on(adapter.led)}
-  end
-  
-  def off(adapter) do
-    %{adapter | led: adapter.module.off(adapter.led)}
-  end
-  
-  def set(adapter, true) do
-    %{adapter | led: on(adapter.led)}
-  end
-  
-  def set(adapter, false) do
-    %{adapter | led: off(adapter.led)}
-  end
-
-  defp from_env() do
-    Application.get_env(:clock, :led_adapter)
-  end
+  def on(adapter), do: %{adapter | led: adapter.module.on(adapter.led)}
+  def off(adapter), do: %{adapter | led: adapter.module.off(adapter.led)}
+  def set(adapter, true), do: %{adapter | led: on(adapter)}
+  def set(adapter, false), do: %{adapter | led: off(adapter)}
+  defp from_env(), do: Application.get_env(:clock, :led_adapter)
 end

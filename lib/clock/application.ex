@@ -7,24 +7,26 @@ defmodule Clock.Application do
 
   def start(_type, _args) do
     opts = [strategy: :one_for_one, name: Clock.Supervisor]
-
-    children =
-      [
-      ] ++ children(target())
-
-    Supervisor.start_link(children, opts)
+    t = target()
+    e = env()
+    IO.puts("t: #{inspect(t)}")
+    IO.puts("e: #{inspect(e)}")
+    Supervisor.start_link(children(target(), env()), opts)
   end
 
-  # List all child processes to be supervised
-  def children(:host) do
+  def children(_target, :test) do
     []
   end
 
-  def children(_target) do
-    []
+  def children(_target, _other) do
+    [{Clock.Server, Application.get_all_env(:clock)}]
   end
 
   def target() do
     Application.get_env(:clock, :target)
+  end
+
+  def env() do
+    Application.get_env(:clock, :env)
   end
 end
