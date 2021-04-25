@@ -23,7 +23,7 @@ defmodule Clock.MixProject do
   def application do
     [
       mod: {Clock.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 
@@ -49,7 +49,10 @@ defmodule Clock.MixProject do
       {:nerves_system_rpi4, "~> 1.13", runtime: false, targets: :rpi4},
       {:nerves_system_bbb, "~> 2.8", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.4", runtime: false, targets: :osd32mp1},
-      {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64}
+      {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64},
+
+      # Additional dependencies
+      {:circuits_gpio, "~> 0.4.6"}
     ]
   end
 
