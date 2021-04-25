@@ -49,4 +49,6 @@ defmodule Clock do
       blink(gpio, times, wait)
     end)
   end
+
+  def hello, do: :world
 end
